@@ -32,7 +32,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         await context.SaveChangesAsync();
         return new UserDto
         {
-            Username = user.UserName,
+            UserName = user.UserName,
             Token = tokenService.CreateToken(user)
         };
     }
@@ -54,7 +54,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
 
         return new UserDto
         {
-            Username = user.UserName,
+            UserName = user.UserName,
             Token = tokenService.CreateToken(user)
         };
     }
