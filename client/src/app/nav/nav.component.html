@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Dating App</a>
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active">Dating App</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,30 +13,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      @if(accountService.currentUser()){
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        @if(accountService.currentUser()){
         <li class="nav-item">
-          <a class="nav-link">Maches</a>
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">Maches</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Lists</a>
+          <a class="nav-link" routerLink="/user-lists" routerLinkActive="active">Lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Massages</a>
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active">Massages</a>
         </li>
+        }
       </ul>
-
+      @if(accountService.currentUser()){
       <div class="dropdown" dropdown>
         <a
           dropdownToggle
           class="dropdown-toggle text-light text-decoration-none"
-          >welcome {{ accountService.currentUser()?.userName }}</a>
+          >welcome {{ accountService.currentUser()?.userName }}</a
+        >
         <div *dropdownMenu class="dropdown-menu">
           <a class="dropdown-item">Edit Profile!</a>
           <a (click)="logout()" class="dropdown-item">Logout</a>
         </div>
       </div>
-
       } @else{
       <form
         #loginForm="ngForm"
